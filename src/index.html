@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mahad's Vault</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <style>
+        body {
+            background-color: #fff;
+            color: #000;
+            font-family: sans-serif;
+        }
+        h1 {
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h5 {
+            font-weight: bold;
+            border-bottom: 1px solid #000;
+            padding-bottom: 6px;
+            margin-bottom: 14px;
+        }
+        .bal {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        input {
+            border: 1px solid #000;
+            border-radius: 3px;
+            padding: 6px 10px;
+            width: 100%;
+        }
+        input:focus {
+            outline: none;
+            border-color: #000;
+        }
+        .btn-main {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 7px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+            width: 100%;
+        }
+        .btn-main:hover {
+            background-color: #333;
+        }
+        .btn-out {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #000;
+            padding: 7px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+            width: 100%;
+        }
+        .btn-out:hover {
+            background-color: #f0f0f0;
+        }
+        .info-line {
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="max-width: 700px; margin-top: 50px;">
+
+        <h1>Mahad's DeFi Vault</h1>
+        <p class="text-muted">Deposit MMOS tokens to receive vault shares. A 2% fee is charged on withdrawal.</p>
+        <hr/>
+
+        <!-- balances -->
+        <div class="section">
+            <h5>Your Balances</h5>
+            <p class="info-line">MMOS Token: <span class="bal" id="token-balance">0</span></p>
+            <p class="info-line">Vault Shares: <span class="bal" id="vault-balance">0</span></p>
+            <p class="info-line">Membership: <span class="bal" id="membership-status">Not a Member</span></p>
+        </div>
+
+        <!-- deposit -->
+        <div class="section">
+            <h5>Deposit</h5>
+            <div class="row">
+                <div class="col-8">
+                    <input type="number" id="deposit-amount" placeholder="Amount to deposit">
+                </div>
+                <div class="col-4">
+                    <button class="btn-main" id="deposit-btn">Deposit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- withdraw -->
+        <div class="section">
+            <h5>Withdraw</h5>
+            <div class="row">
+                <div class="col-8">
+                    <input type="number" id="withdraw-amount" placeholder="Shares to withdraw">
+                </div>
+                <div class="col-4">
+                    <button class="btn-out" id="withdraw-btn">Withdraw</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- info -->
+        <div class="section">
+            <h5>Info</h5>
+            <p class="info-line">Connected Wallet: <span class="text-muted" id="user-address">Not connected</span></p>
+            <p class="info-line">Admin Address: <span class="text-muted" id="admin-address">Loading...</span></p>
+            <p class="info-line">Admin MMOS Balance: <span class="bal" id="admin-balance">0</span></p>
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.2.0/dist/ethers.umd.min.js"></script>
+    <script src="app.js"></script>
+
+    <div id="overlay" style="
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.93);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.4rem;
+        color: white;
+        ">
+        Connect MetaMask wallet
+    </div>
+</body>
+</html>
